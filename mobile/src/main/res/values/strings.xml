@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- COMMON -->
+    <string name="app_name">We Drive U</string>
+    <string name="common_warning">Warning</string>
+    <string name="common_ok">OK</string>
+    <!-- LOGIN -->
+    <string name="we_drive_you_title">WeDriveU</string>
+    <string name="we_drive_you_slogan">You are just one click far from your destination</string>
+	<string name="schedule_your_trip">Schedule your trip</string>
+    <string name="place_autocomplete_error">Error calling Google Place API</string>
+    <string name="pick_up_position_not_filled">
+        Please specify a pick up address or check the \"Use My Position\" button
+    </string>
+	<string name="destination_address_not_filled">Please insert the destination address</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="login_error_message">Incorrect username or password, please try again</string>
+    <!-- SCHEDULING -->
+    <string name="scheduling_title">Scheduling</string>
+    <string name="scheduling_description">Schedule your trip</string>
+    <string name="scheduling_user_address_label">Pick up address</string>
+    <string name="scheduling_use_my_position">Use my position</string>
+    <string name="scheduling_destination_address_label">Destination</string>
+    <string name="scheduling_address_hint">Type an address</string>
+    <string name="scheduling_arrive_at_label">Arrive at</string>
+    <string name="scheduling_arrive_at_hint">Select time</string>
+    <string name="scheduling_search_vehicle">Search Vehicle</string>
+    <string name="scheduling_position_not_found">Unable to find correct positions, please type the again</string>
+    <!-- VEHICLE -->
+    <string name="vehicle_title">This vehicle is for you</string>
+    <string name="vehicle_license_plate">License Plate: %s</string>
+    <string name="vehicle_pickup_time">Pickup time: %s</string>
+    <string name="vehicle_arrives_at">Arrives at destination at: %s</string>
+    <string name="vehicle_decline">DECLINE</string>
+    <string name="vehicle_accept">ACCEPT</string>
+    <string name="vehicles_head_quarter">Head Quarter</string>
+    <!-- BOOKING -->
+    <string name="booking_accepted">Booking Accepted\nYour vehicle will arrive soon</string>
+    <string name="vehicle_arrived">Your vehicle has arrived!</string>
+    <string name="enter_vehicle">Enter vehicle</string>
+    <string name="destination">You\'ll arrive at your destination soon!</string>
+    <string name="arrived_at_destination">Yay! You\'ve arrived at destination, hope to see you again!</string>
+    <string name="substitution">
+        Oh no! Your vehicle is broken!\n Hang on, we\'re searching a new vehicle for you&#8230;
+    </string>
+    <string name="substitution_completed">We\'ve found a substitution vehicle!</string>
+    <string name="booking_session_active">You can\'t cancel an active booking session</string>
+</resources>

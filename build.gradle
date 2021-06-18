@@ -1,0 +1,65 @@
+group = projectGroup
+version = projectVersion
+description = projectDescription
+
+allprojects {
+    apply plugin: 'idea'
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+}
+
+
+def sharedModulePath = ":shared"
+def mobileModulePath = ":mobile"
+def java7ModulePaths = [mobileModulePath, sharedModulePath] as String[]
+
+configure(subprojects.grep { sharedModulePath == it.path }) {
+    apply plugin: 'java'
+    sourceCompatibility = "$jdk7Version"
+    javadoc.destinationDir = new File("$docsFolderJava/${it.path}")
+    dependencies {
+        compile "com.rabbitmq:amqp-client:$rabbitMQVersion"
+        compile "org.slf4j:slf4j-api:$slf4jVersion"
+        compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    }
+}
+
+configure(subprojects.grep {!java7ModulePaths.contains(it.path)}) {
+    apply plugin: 'java'
+    apply plugin: 'scala'
+    sourceCompatibility = "$jdk8Version"
+    javadoc.destinationDir = new File("$docsFolderJava/${it.path}")
+    scaladoc.destinationDir = new File("$docsFolderScala/${it.path}")
+
+    dependencies {
+        testCompile "junit:junit:$junitVersion"
+        testCompile "org.scala-lang:scala-library:$scalaVersion"
+        testCompile "org.scalatest:scalatest_2.12:$scalaTestVersion"
+        testCompile "io.vertx:vertx-unit:$vertx3Version"
+        testCompile "org.scalatest:scalatest_2.12:$scalaTestVersion"
+        compile "org.scala-lang:scala-library:$scalaVersion"
+        compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+        compile "io.vertx:vertx-core:$vertx3Version"
+        compile "io.vertx:vertx-lang-scala_2.12:$vertx3Version"
+        compile "io.vertx:vertx-rabbitmq-client:$vertx3Version"
+        compile "io.vertx:vertx-rabbitmq-client-scala_2.12:$vertx3Version"
+        compile "com.rabbitmq:amqp-client:$rabbitMQVersion"
+        compile "org.slf4j:slf4j-api:$slf4jVersion"
+        compile project(path: ':shared')
+    }
+
+}
+
+defaultTasks 'clean', 'build', 'javadoc', 'scaladoc'
+
+

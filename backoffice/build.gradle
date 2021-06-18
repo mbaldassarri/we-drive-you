@@ -1,0 +1,22 @@
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala', 'src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+dependencies {
+    compile project(path: ':services:shared')
+}
+jar {
+    archiveName = "${rootProject.name}-${this.name}-${rootProject.version}.jar"
+    destinationDir = new File("$releasesClientFolder")
+    manifest {
+        attributes 'Implementation-Version': project.version,
+                'Main-Class': 'com.wedriveu.backoffice.Main'
+    }
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {}
+}
